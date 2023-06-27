@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>responsive NavBar</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/6110aec08f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="page-header">
+            <div class="nav-header">
+                <h1>Visual_Coder</h1>
+
+                <button class="nav-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+
+            <ul class="page-links">
+                <li>
+                    <a href="#" class="page-link">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="page-link">About</a>
+                </li>
+                <li>
+                    <a href="#" class="page-link">Blog</a>
+                </li>
+                <li>
+                    <a href="#" class="page-link">Contact</a>
+                </li>
+            </ul>
+
+
+            <ul class="social-links">
+                <li>
+                    <a href="https://twitter.com">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://linkedin.com">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://facebook.com">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://youtube.com">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <script>
+        let showLinks = false;
+
+        $('.nav-toggle').click(() => {
+            if (!showLinks)
+                $('.page-links').addClass('show-links');
+            else
+                $('.page-links').removeClass('show-links');
+
+            showLinks = !showLinks
+        });
+
+        $('.page-link').hover(
+            function () {
+                if ($(document).width() <= 786) {
+                    const randomColor = getRandomColor();
+                    $(this).css('background-color', randomColor)
+                }
+            },
+            function () {
+                $(this).css('background-color', '#f1f1f1f1')
+            }
+        )
+
+        function getRandomColor() {
+            const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+            let color = '#';
+
+            for (let index = 0; index < 6; index++) {
+                const randomNumber = getRandomNumber(hex);
+                const char = hex[randomNumber]
+                color += char;
+            }
+            return color;
+        }
+
+        function getRandomNumber(array) {
+            return Math.floor(Math.random() * array.length);
+        }
+    </script>
+
+</body>
+
+</html>
